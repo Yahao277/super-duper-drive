@@ -9,7 +9,7 @@ public interface FileMapper {
   File getFile(String filename);
 
   @Insert("INSERT INTO FILES (filename,contenttype,filesize,userid,filedata) " +
-      "VALUES (#{filename},#{contenttype},#{filesize},#{userid},#{filedata})")
+      "VALUES (#{filename},#{contentType},#{fileSize},#{userId},#{fileData})")
   @Options(useGeneratedKeys = true,keyProperty = "fileId")
   Integer insert(File file);
 

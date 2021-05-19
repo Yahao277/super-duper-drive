@@ -57,6 +57,9 @@ public class HomePage {
   @FindBy(xpath = "//*[@id=\"credentialTable\"]/tbody/tr/td[1]/button")
   private WebElement editCredentialBtn;
 
+  @FindBy(id = "logout-btn")
+  public WebElement logoutBtn;
+
   @FindBy(id = "submit-button")
   private WebElement submitButton;
 
@@ -71,6 +74,10 @@ public class HomePage {
     this.js = (JavascriptExecutor) this.driver;
   }
 
+  public void logoutClick(){
+    this.js.executeScript("arguments[0].click()",this.logoutBtn);
+  }
+
   public void createCredential(String url,String user,String password){
     this.js.executeScript("arguments[0].click()",this.credentialsTab);
     this.driverWait.until(ExpectedConditions.elementToBeClickable(this.credentialAddBtn));
@@ -83,7 +90,7 @@ public class HomePage {
   }
 
   public void editCredential(String username){
-    this.credentialsTab.click();
+    this.js.executeScript("arguments[0].click()",this.credentialsTab);
     this.driverWait.until(ExpectedConditions.elementToBeClickable(this.editCredentialBtn));
     this.editCredentialBtn.click();
     this.driverWait.until(ExpectedConditions.elementToBeClickable(this.credentialUsername));
@@ -94,7 +101,7 @@ public class HomePage {
   }
 
   public void deleteCredential(){
-    this.credentialsTab.click();
+    this.js.executeScript("arguments[0].click()",this.credentialsTab);
     this.driverWait.until(ExpectedConditions.elementToBeClickable(this.deleteCredentialBtn));
     this.deleteCredentialBtn.click();
   }
@@ -111,7 +118,7 @@ public class HomePage {
   }
 
   public void editNote(String description){
-    this.notesTab.click();
+    this.js.executeScript("arguments[0].click()",this.notesTab);
     this.driverWait.until(ExpectedConditions.elementToBeClickable(this.noteEditBtn));
     this.noteEditBtn.click();
     this.driverWait.until(ExpectedConditions.elementToBeClickable(this.noteDescription));
@@ -121,7 +128,7 @@ public class HomePage {
   }
 
   public void deleteNote(){
-    this.notesTab.click();
+    this.js.executeScript("arguments[0].click()",this.notesTab);
     this.driverWait.until(ExpectedConditions.elementToBeClickable(this.noteDelBtn));
     this.noteDelBtn.click();
   }

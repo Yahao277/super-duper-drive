@@ -39,6 +39,9 @@ public class HomeController {
                             @ModelAttribute("newCredential") CredentialForm newCredential,
                             Model model){
     Integer userId = getUserId(authentication);
+    if( userId == null){
+      return "login";
+    }
     model.addAttribute("files", this.fileService.getFilesList(userId));
     model.addAttribute("notes", noteService.getNotesByUser(userId));
     model.addAttribute("credentials", credentialService.getCredentialListings(userId));
